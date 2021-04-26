@@ -1,0 +1,84 @@
+/*
+    Main Style
+*/
+$mainColor: #34b434;
+$textColor: #999;
+$textFont : 1.5rem;
+$textWeight: 500;
+$btnColor: #007bff;
+$btnBorder: #007bff;
+/* Start Navbar */
+
+
+
+/* End Navbar */
+
+/* Start Content of Lessons */
+
+.lessons {
+    .card {
+        margin:15px 0;
+        .card-header {
+            padding:10px;
+        }
+        .card-text {
+            padding:10px;
+            font-size:$textFont;
+        }
+        .num {
+            width:fit-content;
+            
+        }
+    }
+    > div {
+        display: none;
+    }
+    div.active {
+        display: block;
+    }
+}
+
+/* End Content of Lessons */
+
+/* Start Quize ReWrite */
+
+.quizes {
+    .quizes-cont {
+        .card {
+            margin:20px 0;
+            .card-header {
+                background-color:$btnColor;
+                color:#fff;
+                font-size: $textFont;
+            }
+            .quiz-question {
+                direction: rtl;
+                text-align: right;
+                margin-bottom:20px;
+            }
+            .quiz-ans {
+                margin-bottom: 20px;
+                
+            }
+        }
+        .send-ans {
+            display: inline-block;
+        }
+    }
+}
+
+/* End Quize ReWrite */
+
+/* Start Complete Quiz */
+
+.complete {
+    .comp-question {
+        text-align: center;
+        font-size: $textFont;
+    }
+    .comp-ans {
+        margin-bottom: 20px;
+    }
+}
+
+/* End Complete Quiz */

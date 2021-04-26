@@ -1,0 +1,61 @@
+/*
+    Main Style
+*/
+/* Start Navbar */
+/* End Navbar */
+/* Start Content of Lessons */
+.lessons .card {
+  margin: 15px 0;
+}
+.lessons .card .card-header {
+  padding: 10px;
+}
+.lessons .card .card-text {
+  padding: 10px;
+  font-size: 1.5rem;
+}
+.lessons .card .num {
+  width: fit-content;
+}
+.lessons > div {
+  display: none;
+}
+.lessons div.active {
+  display: block;
+}
+
+/* End Content of Lessons */
+/* Start Quize ReWrite */
+.quizes .quizes-cont .card {
+  margin: 20px 0;
+}
+.quizes .quizes-cont .card .card-header {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1.5rem;
+}
+.quizes .quizes-cont .card .quiz-question {
+  direction: rtl;
+  text-align: right;
+  margin-bottom: 20px;
+}
+.quizes .quizes-cont .card .quiz-ans {
+  margin-bottom: 20px;
+}
+.quizes .quizes-cont .send-ans {
+  display: inline-block;
+}
+
+/* End Quize ReWrite */
+/* Start Complete Quiz */
+.complete .comp-question {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.complete .comp-ans {
+  margin-bottom: 20px;
+}
+
+/* End Complete Quiz */
+
+/*# sourceMappingURL=style.css.map */
