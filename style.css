@@ -5,26 +5,100 @@
 /* End Navbar */
 /* Start Content of Lessons */
 .lessons .card {
+  display: none;
   margin: 15px 0;
 }
 .lessons .card .card-header {
   padding: 10px;
 }
-.lessons .card .card-text {
-  padding: 10px;
+.lessons .card .card-header .card-title {
+  margin: 0;
   font-size: 1.5rem;
 }
+.lessons .card .card-header .card-title .title {
+  color: #007bff;
+  text-transform: capitalize;
+}
+.lessons .card .card-body .desc {
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+.lessons .card .card-body .desc .eng-sen {
+  text-align: left;
+  font-size: 1.5rem;
+  color: #007bff;
+}
+.lessons .card .card-body .desc .ar-sen {
+  direction: rtl;
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
 .lessons .card .num {
-  width: fit-content;
-}
-.lessons > div {
-  display: none;
-}
-.lessons div.active {
   display: block;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  width: fit-content;
 }
 
 /* End Content of Lessons */
+/* Words Content */
+.show-words {
+  background: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+  text-align: center;
+  display: block;
+  margin: 10px 0;
+  margin: 10px auto;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.words .card {
+  margin: 15px 0;
+}
+.words .card .card-header {
+  padding: 10px;
+}
+.words .card .card-header .card-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.words .card .card-header .card-title .title {
+  color: #007bff;
+  text-transform: capitalize;
+}
+.words .card .card-body .desc {
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+.words .card .card-body .desc .eng-sen {
+  text-align: left;
+  font-size: 1.5rem;
+  color: #007bff;
+}
+.words .card .card-body .desc .ar-sen {
+  direction: rtl;
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.words .card .card-body .ex {
+  color: #007bff;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.words .card .num {
+  display: block;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  width: fit-content;
+}
+
 /* Start Quize ReWrite */
 .quizes .quizes-cont .card {
   margin: 20px 0;
@@ -42,7 +116,7 @@
 .quizes .quizes-cont .card .quiz-ans {
   margin-bottom: 20px;
 }
-.quizes .quizes-cont .send-ans {
+.quizes .quizes-cont a {
   display: inline-block;
 }
 

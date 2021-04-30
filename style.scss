@@ -1,7 +1,7 @@
 /*
     Main Style
 */
-$mainColor: #34b434;
+$mainColor: #007bff;
 $textColor: #999;
 $textFont : 1.5rem;
 $textWeight: 500;
@@ -17,34 +17,114 @@ $btnBorder: #007bff;
 
 .lessons {
     .card {
+        display: none;
         margin:15px 0;
         .card-header {
             padding:10px;
+            .card-title {
+                margin: 0;
+                font-size: $textFont;
+                .title {
+                    color:$mainColor;
+                    text-transform: capitalize;
+                }
+            }
         }
-        .card-text {
-            padding:10px;
-            font-size:$textFont;
+        .card-body {
+            .desc {
+                padding: 10px 0;
+                margin-bottom: 20px;
+                .eng-sen {
+                    text-align: left;
+                    font-size: $textFont;
+                    color:$mainColor;
+                }
+                .ar-sen {
+                    direction: rtl;
+                    text-align: right;
+                    font-size: $textFont;
+                    font-weight: $textWeight;
+                }
+            }
         }
         .num {
-            width:fit-content;
-            
+            display: block;
+            padding: 5px 10px;
+            background-color: $mainColor;
+            color: #fff;
+            width: fit-content;
         }
-    }
-    > div {
-        display: none;
-    }
-    div.active {
-        display: block;
     }
 }
 
 /* End Content of Lessons */
+
+/* Words Content */
+
+.show-words {
+    background: $mainColor;
+    color: #fff;
+    border: 1px solid $mainColor;
+    text-align: center;
+    display: block;
+    margin: 10px 0;
+    margin: 10px auto;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+.words {
+    .card {
+        margin:15px 0;
+        .card-header {
+            padding:10px;
+            .card-title {
+                margin: 0;
+                font-size: $textFont;
+                .title {
+                    color:$mainColor;
+                    text-transform: capitalize;
+                }
+            }
+        }
+        .card-body {
+            .desc {
+                padding: 10px 0;
+                margin-bottom: 20px;
+                .eng-sen {
+                    text-align: left;
+                    font-size: $textFont;
+                    color:$mainColor;
+                }
+                .ar-sen {
+                    direction: rtl;
+                    text-align: right;
+                    font-size: $textFont;
+                    font-weight: $textWeight;
+                }
+            }
+            .ex {
+                color:$mainColor;
+                margin-bottom: 10px;
+                text-align: center;
+                font-size: $textFont;
+            }
+        }
+        .num {
+            display: block;
+            padding: 5px 10px;
+            background-color: $mainColor;
+            color: #fff;
+            width: fit-content;
+        }
+    }
+}
 
 /* Start Quize ReWrite */
 
 .quizes {
     .quizes-cont {
         .card {
+            
             margin:20px 0;
             .card-header {
                 background-color:$btnColor;
@@ -61,7 +141,7 @@ $btnBorder: #007bff;
                 
             }
         }
-        .send-ans {
+        a {
             display: inline-block;
         }
     }
