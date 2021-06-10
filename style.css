@@ -119,6 +119,12 @@
 .quizes .quizes-cont a {
   display: inline-block;
 }
+.quizes .quizes-cont .quiz {
+  display: none;
+}
+.quizes .quizes-cont #quiz1 {
+  display: block;
+}
 
 /* End Quize ReWrite */
 /* Start Complete Quiz */

@@ -52,6 +52,7 @@ let data = [
 /**
 * Array Of Data Words
 */
+
 let words = [
     {
         lessonName: "Sports",
@@ -60,10 +61,34 @@ let words = [
         ex: `
             <div class="card-text desc">
                 <div class="eng-sen">Sport is my life</div>
-                <div class="ar-sen">الرياضة هي حياتي</div>
+                <div class="ar-sen">الرياضة حياتي</div>
             </div>
         `,
         num: 1,
+    },
+    {
+        lessonName: "Reading",
+        engWord: "Reading",
+        arWord: "قراءة",
+        ex: `
+            <div class="card-text desc">
+                <div class="eng-sen">I like reading so much</div>
+                <div class="ar-sen">انا احب القراءة جدا</div>
+            </div>
+        `,
+        num: 2,
+    },
+    {
+        lessonName: "Foods",
+        engWord: "Food",
+        arWord: "الطعام",
+        ex: `
+            <div class="card-text desc">
+                <div class="eng-sen">meat is a kind of food</div>
+                <div class="ar-sen">اللحمة هي نوع من الطعام</div>
+            </div>
+        `,
+        num: 3,
     },
 ];
 
@@ -72,35 +97,40 @@ let words = [
  */
 
 /* Words Section */
-
 let showWords = () => {
-    $(".lessons").css("display", "none"); // hide content lessons
+    $(".lessons > div").hide(); // hide content lessons
     $(".words").fadeIn();
-    for (let i = 0; i < words.length; i++) {
-        let wordSection = document.createElement("div");
-        wordSection.classList.add("card")
-        wordSection.innerHTML = `
-            <div class="card-header">
-                <div class="card-title">words of lesson: 
-                <span class="title">
-                    ${words[i].lessonName}</span>
-                </div>
+    
+    // get words depend on lesson num
+    let lessNum = parseInt($("div.active .num").text());
+    lessNum -= 1;
+    let wordSection = document.createElement("div");
+    wordSection.classList.add("card")
+    wordSection.innerHTML = `
+        <div class="card-header">
+            <div class="card-title">words of lesson: 
+            <span class="title">
+                ${words[lessNum].lessonName}</span>
             </div>
-            <div class="card-body">
-                <div class="card-text desc">
-                    <div class="eng-sen">${words[i].engWord}</div>
-                    <div class="ar-sen">${words[i].arWord}</div>
-                </div>
-                <h5 class="ex">Examples</h5>
-                ${words[i].ex}
+        </div>
+        <div class="card-body">
+            <div class="card-text desc">
+                <div class="eng-sen">${words[lessNum].engWord}</div>
+                <div class="ar-sen">${words[lessNum].arWord}</div>
             </div>
-            <span class="num">${words[i].num}</span>
-        `;
-        wordscont.append(wordSection);
-    }
+            <h5 class="ex">Examples</h5>
+            ${words[lessNum].ex}
+        </div>
+        <span class="num">${words[lessNum].num}</span>
+    `;
+    wordscont.append(wordSection);
+
 }
 
-
+// show words
+$(".show-words").on("click", () => {
+    showWords();
+});
 
 
 // Function To Show All Lessons
@@ -124,40 +154,23 @@ let showWords = () => {
             <span class="num">${data[i].lessonNum}</span>
         `;
         content.append(lesson)
-        // // show words of lesson
-        // $(".show-words").on("click", function() {
-        //     // e.preventDefault();
-        //     console.log(words[i]);
-        // });
     }
 })();
-
 
 
 // show lesson one in opennig
 $('div.lesson1').fadeIn().addClass("active");
 
 // // get Lesson by Lesson Menu
-
 $(".lessons-menu a").on("click", function () {
     $(".lessons .card").fadeOut().removeClass("active");
+    $(".words > div").hide();
     $("." + $(this).data("lesson")).delay(500);
     $("." + $(this).data("lesson")).fadeIn().addClass("active");
-    // console.log($(this).data("lesson"));
+    console.log($(this).data("lesson"));
 });
 
-// num of lesson
-// let lessonNum = $("div.active .num").text();
-// console.log($("div.active .num").text());
-$(".show-words").on("click", () => {
-    // let lessonNum = $("div.active .num").text();
-    
-    // // get lesson words
-    // for(let i = 0; i < words.length; i++) {
-        
-    // }
-    showWords();
-})
+
 
 
 

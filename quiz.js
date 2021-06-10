@@ -1,86 +1,92 @@
 /**
  * Imports First Quiz : Rewrite The Sentence 
  */
-// let errs = [];
+let errs = [];
+let score = 0;
+// Define Current Quiz
+let currentQuiz = 0;
+const quizData = [
+    {
+        question: "انا احب الكورة جدا",
+        answer: "I love football so much",
+    },
+    {
+        question: "انا احب الاكل جدا",
+        answer: "I love food so much",
+    }
+];
 
-// let score = 0;
-// // Define Current Quiz
-// let currentQuiz = 0;
-// const quizData = [
-//     {
-//         question: "انا احب الكورة جدا",
-//         answer: "I love football so much",
-//     },
-//     {
-//         question: "انا احب الاكل جدا",
-//         answer: "I love food so much",
-//     }
-// ];
 
+const loadQuiz = () => {
 
-// const loadQuiz = () => {
+    // Get The Data Of The Current Quiz
+    let currentQuizData = quizData[currentQuiz];
 
-//     // Get The Data Of The Current Quiz
-//     let currentQuizData = quizData[currentQuiz];
+    // Get The Current Quiz Question
+    let question = document.querySelector(".quiz-question").textContent = currentQuizData.question;
 
-//     // Get The Current Quiz Question
-//     let question = document.querySelector(".quiz-question").textContent = currentQuizData.question;
+};
 
-// };
+loadQuiz();
 
-// loadQuiz();
+// check the answer after submitted
 
-// // check the answer after submitted
+$(".re").on("click", () => {
+    let ans = $(".quiz-ans"); // get the answer
 
-// $(".re").on("click", () => {
-//     let ans = $(".quiz-ans"); // get the answer
+    // check if answer right or not
+    if (ans.val() == quizData[currentQuiz].answer) {
+        score++;
+        console.log(score);
+    } else if (ans.val() == "") {
+        $(".err").fadeIn().addClass("alert alert-danger").text("Filed Cannot be empty").delay(1000).fadeOut(500);
+        return;
+        // console.log("not")
+    } else if(ans.val() != quizData[currentQuiz].answer) {
+        errs.push({"wrong": ans.val(), "right": quizData[currentQuiz].answer, "quesNum":currentQuiz, "ques": quizData[currentQuiz].question }); // push wrong ans to array
+    }
+    // get next question
+    currentQuiz++;
 
-//     // check if answer right or not
-//     if (ans.val() == quizData[currentQuiz].answer) {
-//         score++;
-//         console.log(score);
-//     } else if (ans.val() == "") {
-//         $(".err").fadeIn().addClass("alert alert-danger").text("Filed Cannot be empty").delay(1000).fadeOut(500);
-//         return;
-//         // console.log("not")
-//     } else if(ans.val() != quizData[currentQuiz].answer) {
-//         errs.push({"wrong": ans.val(), "right": quizData[currentQuiz].answer, "quesNum":currentQuiz, "ques": quizData[currentQuiz].question }); // push wrong ans to array
-//     }
-//     // get next question
-//     currentQuiz++;
+    // Check If it's Not The Final Quiz
+    if (currentQuiz < quizData.length) {
+        ans.val("");
+        loadQuiz();
+    } else {
 
-//     // Check If it's Not The Final Quiz
-//     if (currentQuiz < quizData.length) {
-//         ans.val("");
-//         loadQuiz();
-//     } else {
-//         document.querySelector(".quizes-cont").innerHTML = `
-//             <div class="card ">
-//                 <div class="card-header">
-//                 Your Quiz Result
-//                 </div>
-//                 <div class="card-body">
-//                     <h5 style="direction:ltr;text-align:center;" class="card-title quiz-question">Your Score is ${score + "/" + quizData.length}</h5>
-//                     <label for="">Go To Next Quiz</label>
-//                     <a href="#" class="btn btn-primary re">Next</a>
-//                 </div>
-//             </div>
-//         `;
-//         if(errs.length != 0) {
-//             errs.forEach((err) => {
-//                 let errReport = `
-//                     <h5>Report Of Question ${err.quesNum+1} : <span>${err.ques}</span></h5>
-//                     <div class="report">
-//                         <div class="wrong alert alert-danger">Your Ansuer is => ${err.wrong}</div>
-//                         <div class="right alert alert-success">The Right Answer is => ${err.right}</div>
-//                     </div>
-//                 `;
-//                 $(".card-body").append(errReport);
-//             });
-//         }
-//         console.log(errs);
-//     }
-// });
+        let scoreSection = document.createElement("div");
+        scoreSection.classList.add("card")
+        scoreSection.classList.add("rewriteResult");
+        scoreSection.innerHTML = `
+            <div class="card-header">
+            Your Quiz Result
+            </div>
+            <div class="card-body">
+                <h5 style="direction:ltr;text-align:center;" class="card-title comp-question">Your Score is ${score + "/" + quizData.length}</h5>
+                <label for="">Go To Next Quiz</label>
+                <a href="#" class="btn btn-primary">Next</a>
+            </div>
+        `;
+        // hide all quiezes
+        $(".quizes .quiz").hide();
+        // show the result
+        document.querySelector(".quizes-cont").append(scoreSection);
+        if(errs.length != 0) {
+            errs.forEach((err) => {
+                let errReport = `
+                    <h5>Report Of Question ${err.quesNum+1} : <span>${err.ques}</span></h5>
+                    <div class="report">
+                        <div class="wrong alert alert-danger">Your Ansuer is => ${err.wrong}</div>
+                        <div class="right alert alert-success">The Right Answer is => ${err.right}</div>
+                    </div>
+                `;
+                $(".quizes-cont .rewriteResult .card-body").append(errReport)
+                // $(".rewrite .card .card-body").append(errReport);
+            });
+        }
+        console.log(errs);
+    }
+});س
 
 /*********************************************************************************************************/
 
@@ -99,7 +105,7 @@ let completeQuizData = [
     }
 ];
 
-// define score
+// define score 
 let compScore = 0; 
 // Define Current Quiz
 let currentCompQuiz = 0;
@@ -119,10 +125,8 @@ const loadQuizComp = () => {
 loadQuizComp();
 
 // check the answer after submitted
-
 $(".complete .comp").on("click", () => {
     let ans = $(".comp-ans"); // get the answer
-
     // check if answer right or not
     if (ans.val() == completeQuizData[currentCompQuiz].answer) {
         compScore++;
@@ -143,18 +147,23 @@ $(".complete .comp").on("click", () => {
         ans.val("");
         loadQuizComp();
     } else {
-        document.querySelector(".quizes-cont").innerHTML = `
-            <div class="card">
-                <div class="card-header">
-                Your Quiz Result
-                </div>
-                <div class="card-body">
-                    <h5 style="direction:ltr;text-align:center;" class="card-title comp-question">Your Score is ${compScore + "/" + completeQuizData.length}</h5>
-                    <label for="">Go To Next Quiz</label>
-                    <a href="#" class="btn btn-primary">Next</a>
-                </div>
+        let scoreSection = document.createElement("div");
+        scoreSection.classList.add("card")
+        scoreSection.classList.add("compResult")
+        scoreSection.innerHTML = `
+            <div class="card-header">
+            Your Quiz Result
+            </div>
+            <div class="card-body">
+                <h5 style="direction:ltr;text-align:center;" class="card-title comp-question">Your Score is ${compScore + "/" + completeQuizData.length}</h5>
+                <label for="">Go To Next Quiz</label>
+                <a href="#" class="btn btn-primary">Next</a>
             </div>
         `;
+        // hide all quiezes
+        $(".quizes .quiz").hide();
+        // show the result
+        document.querySelector(".quizes-cont").append(scoreSection);
         if(comErrs.length != 0) {
             comErrs.forEach((err) => {
                 let errReport = `
@@ -164,7 +173,7 @@ $(".complete .comp").on("click", () => {
                         <div class="right alert alert-success">The Right Answer is => ${err.right}</div>
                     </div>
                 `;
-                $(".card-body").append(errReport);
+                $(".quizes-cont .compResult .card-body").append(errReport)
             });
         }
     }
