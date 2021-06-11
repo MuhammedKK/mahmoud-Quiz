@@ -5,7 +5,7 @@
 /* End Navbar */
 /* Start Content of Lessons */
 .lessons .card {
-  display: none;
+  background-color: #fefefe;
   margin: 15px 0;
 }
 .lessons .card .card-header {
@@ -13,26 +13,35 @@
 }
 .lessons .card .card-header .card-title {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: #f99;
 }
 .lessons .card .card-header .card-title .title {
   color: #007bff;
   text-transform: capitalize;
 }
-.lessons .card .card-body .desc {
-  padding: 10px 0;
-  margin-bottom: 20px;
+.lessons .card .card-body {
+  overflow: hidden;
+  width: 100%;
 }
-.lessons .card .card-body .desc .eng-sen {
-  text-align: left;
+.lessons .card .card-body .enSens {
+  float: left;
+  width: calc(100% / 2 - 10px);
   font-size: 1.5rem;
+}
+.lessons .card .card-body .enSens .enSen {
+  margin-bottom: 10px;
   color: #007bff;
 }
-.lessons .card .card-body .desc .ar-sen {
+.lessons .card .card-body .arSens {
+  float: left;
+  width: calc(100% / 2);
+  margin-left: 10px;
+  font-size: 1.5rem;
   direction: rtl;
   text-align: right;
-  font-size: 1.5rem;
-  font-weight: 500;
+}
+.lessons .card .card-body .arSens .arSen {
+  margin-bottom: 10px;
 }
 .lessons .card .num {
   display: block;
@@ -40,6 +49,9 @@
   background-color: #007bff;
   color: #fff;
   width: fit-content;
+}
+.lessons .card:not(:nth-child(1)) {
+  display: none;
 }
 
 /* End Content of Lessons */
